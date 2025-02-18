@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0191c15d2ba83015ce133e509901bc15",
+    "content-hash": "75bb521475f2594711b56ae26eb75114",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -810,16 +810,16 @@
         },
         {
             "name": "rpurinton/config",
-            "version": "1.0.7",
+            "version": "1.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rpurinton/config.git",
-                "reference": "08a19dd426daca83b1fd9ef2401debf4c142243b"
+                "reference": "040b53569830d4deee4351dfdbc308d217e0c0be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rpurinton/config/zipball/08a19dd426daca83b1fd9ef2401debf4c142243b",
-                "reference": "08a19dd426daca83b1fd9ef2401debf4c142243b",
+                "url": "https://api.github.com/repos/rpurinton/config/zipball/040b53569830d4deee4351dfdbc308d217e0c0be",
+                "reference": "040b53569830d4deee4351dfdbc308d217e0c0be",
                 "shasum": ""
             },
             "require": {
@@ -845,9 +845,9 @@
             "description": "A basic configuration loading utility.",
             "support": {
                 "issues": "https://github.com/rpurinton/config/issues",
-                "source": "https://github.com/rpurinton/config/tree/1.0.7"
+                "source": "https://github.com/rpurinton/config/tree/1.0.8"
             },
-            "time": "2025-02-18T20:57:15+00:00"
+            "time": "2025-02-18T22:53:19+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
