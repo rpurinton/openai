@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d980f9324a8f64d169c787a7fe026152",
+    "content-hash": "ee2e9137e12be23e549098558f4cf777",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -807,6 +807,47 @@
                 "source": "https://github.com/ralouphie/getallheaders/tree/develop"
             },
             "time": "2019-03-08T08:55:37+00:00"
+        },
+        {
+            "name": "rpurinton/config",
+            "version": "1.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rpurinton/config.git",
+                "reference": "08a19dd426daca83b1fd9ef2401debf4c142243b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rpurinton/config/zipball/08a19dd426daca83b1fd9ef2401debf4c142243b",
+                "reference": "08a19dd426daca83b1fd9ef2401debf4c142243b",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": "^8.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "RPurinton\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Russell Purinton",
+                    "email": "russell.purinton@gmail.com"
+                }
+            ],
+            "description": "A basic configuration loading utility.",
+            "support": {
+                "issues": "https://github.com/rpurinton/config/issues",
+                "source": "https://github.com/rpurinton/config/tree/1.0.7"
+            },
+            "time": "2025-02-18T20:57:15+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
