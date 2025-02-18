@@ -19,7 +19,7 @@ class OpenAIValidators
             'top_p' => 'double',
             'frequency_penalty' => 'double',
             'presence_penalty' => 'double',
-            'max_tokens' => 'int',
+            'max_tokens' => 'integer',
             'stop' => 'array',
             'messages' => 'array',
             'tools' => 'array',
