@@ -119,9 +119,9 @@ class OpenAI
 	public function ask(string $text): string
 	{
 		try {
-			$prompt = array_merge($this->prompt, ['messages' => [['role' => 'user','content' => $text]]]);
+			$prompt = array_merge($this->prompt, ['messages' => [['role' => 'user', 'content' => $text]]]);
 			$response = $this->ai->chat()->create($prompt);
-			return $response->choices[0]->text;
+			return $response->choices[0]->message->content;
 		} catch (\Exception $e) {
 			throw new OpenAIException($e->getMessage());
 		}
