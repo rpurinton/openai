@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace RPurinton;
 
 use TikToken\Encoder;
-use OpenAI as OpenAIClient;
+use OpenAI\Client;
 use RPurinton\Config;
 use RPurinton\Exceptions\ConfigException;
 use RPurinton\Exceptions\OpenAIException;
@@ -24,7 +24,7 @@ class OpenAI
 	 *
 	 * @var OpenAIClient
 	 */
-	public OpenAIClient $ai;
+	public Client $ai;
 
 	/**
 	 * Encoder instance for counting tokens.
@@ -59,7 +59,7 @@ class OpenAI
 			throw new OpenAIException('No OpenAI API key provided.');
 		}
 
-		$this->ai = OpenAIClient::client($apiKey);
+		$this->ai = \OpenAI::client($apiKey);
 		$this->encoder = new Encoder();
 		$this->prompt =  $this->validatedPrompt($this->getConfig());
 	}
@@ -103,6 +103,28 @@ class OpenAI
 	public function getConfig(): array
 	{
 		return Config::get('OpenAI', ['model' => 'string']);
+	}
+
+	/**
+	 * Ask a question to the OpenAI API.
+	 *
+	 * This method sends the provided text to the OpenAI API and returns the response.
+	 *
+	 * @param string $text The text to send to the API.
+	 *
+	 * @return string The response from the API.
+	 *
+	 * @throws OpenAIException If an error occurs while interacting with the API.
+	 */
+	public function ask(string $text): string
+	{
+		try {
+			$prompt = array_merge($this->prompt, ['messages' => [['role' => 'user','content' => $text]]]);
+			$response = $this->ai->chat()->create($prompt);
+			return $response->choices[0]->text;
+		} catch (\Exception $e) {
+			throw new OpenAIException($e->getMessage());
+		}
 	}
 
 	/**
