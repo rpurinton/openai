@@ -13,7 +13,7 @@ use RPurinton\Validators\OpenAIValidators;
 /**
  * Class OpenAI
  *
- * Provides an interface for interacting with the OpenAI API and managing token counts.
+ * A wrapper for the OpenAI API client.
  *
  * @package RPurinton
  */
@@ -22,7 +22,7 @@ class OpenAI
 	/**
 	 * The OpenAI API client instance.
 	 *
-	 * @var OpenAIClient
+	 * @var \OpenAI\Client
 	 */
 	public Client $ai;
 
@@ -35,11 +35,9 @@ class OpenAI
 
 	/**
 	 * OpenAI constructor.
-	 *
 	 * Initializes the API client with the provided API key or falling back to the environment variable.
 	 *
 	 * @param string|null $apiKey The OpenAI API key. If not provided, the OPENAI_API_KEY environment variable is used.
-	 *
 	 * @throws Exception If no API key is provided.
 	 */
 	public function __construct(?string $apiKey = null)
@@ -53,38 +51,45 @@ class OpenAI
 		}
 
 		$this->ai = \OpenAI::client($apiKey);
-		$this->prompt =  $this->getConfig();
-		OpenAIValidators::validatePrompt($this->prompt);
+		$this->reload();
 	}
 
+	/**
+	 * Connect to the OpenAI API.
+	 *
+	 * @param string|null $apiKey The OpenAI API key. If not provided, the OPENAI_API_KEY environment variable is used.
+	 * @return OpenAI The OpenAI instance.
+	 */
+	public static function connect(?string $apiKey = null): OpenAI
+	{
+		return new self($apiKey);
+	}
 
 	/**
-	 * Get the prompt configuration.
-	 *
-	 * @return array
+	 * Reload the prompt configuration.
 	 */
-	public function getConfig(): array
+	public function reload(): void
 	{
-		return Config::get('OpenAI', ['model' => 'string']);
+		$this->prompt = Config::get('OpenAI', ['model' => 'string']);
+		OpenAIValidators::validatePrompt($this->prompt);
 	}
 
 	/**
 	 * Ask a question to the OpenAI API.
-	 *
 	 * This method sends the provided text to the OpenAI API and returns the response.
 	 *
 	 * @param string $text The text to send to the API.
-	 *
 	 * @return string The response from the API.
-	 *
 	 * @throws OpenAIException If an error occurs while interacting with the API.
 	 */
 	public function ask(string $text): string
 	{
 		try {
-			$prompt = array_merge($this->prompt, ['messages' => [['role' => 'user', 'content' => $text]]]);
-			$response = $this->ai->chat()->create($prompt);
-			return $response->choices[0]->message->content;
+			$this->prompt['message'][] = ['role' => 'user', 'content' => $text];
+			$response = $this->create($this->prompt);
+			$response = $response->choices[0]->message->content;
+			$this->prompt['message'][] = ['role' => 'ai', 'content' => $response];
+			return $response;
 		} catch (\Exception $e) {
 			throw new OpenAIException($e->getMessage());
 		}
@@ -93,12 +98,8 @@ class OpenAI
 	/**
 	 * Create a chat response from the OpenAI API.
 	 *
-	 * This method sends the provided prompt to the OpenAI API and returns the response.
-	 *
 	 * @param array $prompt The prompt to send to the API.
-	 *
 	 * @return CreateResponse The response from the API.
-	 *
 	 * @throws OpenAIException If an error occurs while interacting with the API.
 	 */
 	public function create(array $prompt): CreateResponse
