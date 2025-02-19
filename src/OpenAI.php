@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace RPurinton;
 
-use TikToken\Encoder;
 use OpenAI\Client;
 use OpenAI\Responses\Chat\CreateResponse;
 use RPurinton\Config;
@@ -26,13 +25,6 @@ class OpenAI
 	 * @var OpenAIClient
 	 */
 	public Client $ai;
-
-	/**
-	 * Encoder instance for counting tokens.
-	 *
-	 * @var Encoder
-	 */
-	private Encoder $encoder;
 
 	/**
 	 * Prompt Configuration
@@ -61,7 +53,6 @@ class OpenAI
 		}
 
 		$this->ai = \OpenAI::client($apiKey);
-		$this->encoder = new Encoder();
 		$this->prompt =  $this->getConfig();
 		OpenAIValidators::validatePrompt($this->prompt);
 	}
@@ -117,20 +108,5 @@ class OpenAI
 		} catch (\Exception $e) {
 			throw new OpenAIException($e->getMessage());
 		}
-	}
-
-	/**
-	 * Counts the tokens in the given text using the encoder.
-	 *
-	 * This method encodes the provided text and returns the count of tokens generated.
-	 *
-	 * @param string $text The text to analyze.
-	 *
-	 * @return int The number of tokens in the input text.
-	 */
-	public function tokenCount(string $text): int
-	{
-		$tokens = $this->encoder->encode($text);
-		return count($tokens);
 	}
 }
