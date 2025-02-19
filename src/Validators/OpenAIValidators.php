@@ -24,7 +24,7 @@ class OpenAIValidators
             'messages' => 'array',
             'tools' => 'array',
             'functions' => 'array',
-            'response_format' => 'string',
+            'response_format' => 'array',
             'reasoning_effort' => 'string',
             'stream' => 'boolean',
         ];
