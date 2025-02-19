@@ -85,10 +85,9 @@ class OpenAI
 	public function ask(string $text): string
 	{
 		try {
-			$this->prompt['message'][] = ['role' => 'user', 'content' => $text];
-			$response = $this->create($this->prompt);
-			$response = $response->choices[0]->message->content;
-			$this->prompt['message'][] = ['role' => 'ai', 'content' => $response];
+			$this->prompt['messages'][] = ['role' => 'user', 'content' => $text];
+			$response = $this->create($this->prompt)->choices[0]->message->content;
+			$this->prompt['messages'][] = ['role' => 'assistant', 'content' => $response];
 			return $response;
 		} catch (\Exception $e) {
 			throw new OpenAIException($e->getMessage());
