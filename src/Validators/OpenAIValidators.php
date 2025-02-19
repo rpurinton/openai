@@ -24,6 +24,9 @@ class OpenAIValidators
             'messages' => 'array',
             'tools' => 'array',
             'functions' => 'array',
+            'response_format' => 'string',
+            'reasoning_effort' => 'string',
+            'stream' => 'boolean',
         ];
         foreach ($prompt as $key => $value) {
             if (array_key_exists($key, $keys)) {
