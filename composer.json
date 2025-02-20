@@ -23,7 +23,7 @@
             "RPurinton\\": "src/"
         }
     },
-    "version": "1.0.18",
+    "version": "1.0.19",
     "minimum-stability": "stable",
     "config": {
         "allow-plugins": {
