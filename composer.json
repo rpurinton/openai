@@ -13,17 +13,17 @@
         "php": "^8.0",
         "ext-json": "*",
         "openai-php/client": "^0.10.3",
-        "guzzlehttp/guzzle": "^7.9",
+        "guzzlehttp/guzzle": "^7.9.2",
         "mehrab-wj/tiktoken-php": "^1.0",
-        "rpurinton/config": "^1.0",
-        "rpurinton/log": "^1.0"
+        "rpurinton/config": "^1.0.23",
+        "rpurinton/log": "^1.0.23"
     },
     "autoload": {
         "psr-4": {
             "RPurinton\\": "src/"
         }
     },
-    "version": "1.0.24",
+    "version": "1.0.25",
     "minimum-stability": "stable",
     "config": {
         "allow-plugins": {
