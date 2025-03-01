@@ -30,7 +30,7 @@ class OpenAIValidators
             'stream_options' => 'array',
             'parallel_tool_calls' => 'boolean',
             'user' => 'string',
-            'function_call' => 'string',
+            'function_call' => 'string,array',
             'functions' => 'array',
             'temperature' => 'double,integer',
             'top_p' => 'double,integer',
