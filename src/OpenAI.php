@@ -70,7 +70,7 @@ class OpenAI
 	 */
 	public function reload(): void
 	{
-		$this->prompt = Config::get('OpenAI', ['model' => 'string']);
+		$this->prompt = Config::get('OpenAI');
 		OpenAIValidators::validatePrompt($this->prompt);
 	}
 
