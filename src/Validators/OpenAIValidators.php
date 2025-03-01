@@ -20,6 +20,7 @@ class OpenAIValidators
             'frequency_penalty' => 'double',
             'presence_penalty' => 'double',
             'max_tokens' => 'integer',
+            'max_completion_tokens' => 'integer',
             'stop' => 'array',
             'messages' => 'array',
             'tools' => 'array',
@@ -27,6 +28,7 @@ class OpenAIValidators
             'response_format' => 'array',
             'reasoning_effort' => 'string',
             'stream' => 'boolean',
+            'tool_choice' => 'string',
         ];
         foreach ($prompt as $key => $value) {
             if (array_key_exists($key, $keys)) {
