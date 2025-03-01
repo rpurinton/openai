@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "723d13af44dff5f36bf06bb57f0ac2b8",
+    "content-hash": "c394293ecc9ee9017d98953b0dee15be",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -810,16 +810,16 @@
         },
         {
             "name": "rpurinton/config",
-            "version": "1.0.23",
+            "version": "1.0.24",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rpurinton/config.git",
-                "reference": "35a0e80b9645eebc154b2c9be57ab75d0bf76371"
+                "reference": "5e4abc0f773f71f0df4b0f78ab3094c75dd0173d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rpurinton/config/zipball/35a0e80b9645eebc154b2c9be57ab75d0bf76371",
-                "reference": "35a0e80b9645eebc154b2c9be57ab75d0bf76371",
+                "url": "https://api.github.com/repos/rpurinton/config/zipball/5e4abc0f773f71f0df4b0f78ab3094c75dd0173d",
+                "reference": "5e4abc0f773f71f0df4b0f78ab3094c75dd0173d",
                 "shasum": ""
             },
             "require": {
@@ -845,9 +845,9 @@
             "description": "A basic configuration loading utility.",
             "support": {
                 "issues": "https://github.com/rpurinton/config/issues",
-                "source": "https://github.com/rpurinton/config/tree/1.0.23"
+                "source": "https://github.com/rpurinton/config/tree/1.0.24"
             },
-            "time": "2025-02-25T22:44:06+00:00"
+            "time": "2025-02-26T20:31:02+00:00"
         },
         {
             "name": "rpurinton/https",
