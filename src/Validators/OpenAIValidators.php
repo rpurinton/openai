@@ -41,7 +41,6 @@ class OpenAIValidators
             'stop' => 'array',
             'messages' => 'array',
             'tools' => 'array',
-            'functions' => 'array',
             'response_format' => 'array',
             'reasoning_effort' => 'string',
             'stream' => 'boolean',
