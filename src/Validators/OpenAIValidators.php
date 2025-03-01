@@ -32,10 +32,10 @@ class OpenAIValidators
             'user' => 'string',
             'function_call' => 'string',
             'functions' => 'array',
-            'temperature' => 'double',
-            'top_p' => 'double',
-            'frequency_penalty' => 'double',
-            'presence_penalty' => 'double',
+            'temperature' => 'double,integer',
+            'top_p' => 'double,integer',
+            'frequency_penalty' => 'double,integer',
+            'presence_penalty' => 'double,integer',
             'max_tokens' => 'integer',
             'max_completion_tokens' => 'integer',
             'stop' => 'array',
@@ -44,11 +44,23 @@ class OpenAIValidators
             'response_format' => 'array',
             'reasoning_effort' => 'string',
             'stream' => 'boolean',
-            'tool_choice' => 'string',
+            'tool_choice' => 'string,array',
         ];
         foreach ($prompt as $key => $value) {
             if (array_key_exists($key, $keys)) {
-                if (gettype($value) !== $keys[$key]) {
+                if (strpos($keys[$key], ',') !== false) {
+                    $types = explode(',', $keys[$key]);
+                    $valid = false;
+                    foreach ($types as $type) {
+                        if (gettype($value) === $type) {
+                            $valid = true;
+                            break;
+                        }
+                    }
+                    if (!$valid) {
+                        throw new ConfigException("Invalid type for '$key' in OpenAI config. Expected {$keys[$key]}, got " . gettype($value));
+                    }
+                } else if (gettype($value) !== $keys[$key]) {
                     throw new ConfigException("Invalid type for '$key' in OpenAI config. Expected {$keys[$key]}, got " . gettype($value));
                 }
             } else {
