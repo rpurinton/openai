@@ -15,15 +15,15 @@
         "openai-php/client": "^0.10.3",
         "guzzlehttp/guzzle": "^7.9.2",
         "mehrab-wj/tiktoken-php": "^1.0",
-        "rpurinton/config": "^1.0.24",
-        "rpurinton/log": "^1.0.29"
+        "rpurinton/config": "^1.0.25",
+        "rpurinton/log": "^1.0.32"
     },
     "autoload": {
         "psr-4": {
             "RPurinton\\": "src/"
         }
     },
-    "version": "1.0.35",
+    "version": "1.0.36",
     "minimum-stability": "stable",
     "config": {
         "allow-plugins": {
