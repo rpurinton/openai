@@ -16,14 +16,14 @@
         "guzzlehttp/guzzle": "^7.9.2",
         "mehrab-wj/tiktoken-php": "^1.0",
         "rpurinton/config": "^1.0.25",
-        "rpurinton/log": "^1.0.32"
+        "rpurinton/log": "^1.0.33"
     },
     "autoload": {
         "psr-4": {
             "RPurinton\\": "src/"
         }
     },
-    "version": "1.0.36",
+    "version": "1.0.37",
     "minimum-stability": "stable",
     "config": {
         "allow-plugins": {
